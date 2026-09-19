@@ -16,3 +16,4 @@ def mask_account_card(card_or_account: str) -> str:
 def get_date(date: str) -> str:
     date_object = datetime.fromisoformat(date)
     return date_object.strftime("%d.%m.%Y")
+
