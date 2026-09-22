@@ -7,6 +7,7 @@ def filter_by_state(
     """Фильтрует операции по статусу."""
     return [operation for operation in operations if operation.get("state") == state]
 
+
 def sort_by_date(
     operations: list[dict[str, Any]],
     descending: bool = True,
