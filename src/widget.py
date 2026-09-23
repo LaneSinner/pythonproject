@@ -1,8 +1,10 @@
-from masks import get_mask_card_number, get_mask_account
-
 from datetime import datetime
 
+from src.masks import get_mask_account, get_mask_card_number
+
+
 def mask_account_card(card_or_account: str) -> str:
+    """Маскирует номер карты или счета."""
     parts = card_or_account.split()
     number = parts[-1]
 
@@ -13,7 +15,8 @@ def mask_account_card(card_or_account: str) -> str:
         masked_number = get_mask_card_number(number)
         return " ".join(parts[:-1]) + " " + masked_number
 
+
 def get_date(date: str) -> str:
+    """Преобразует дату в формат ДД.ММ.ГГГГ."""
     date_object = datetime.fromisoformat(date)
     return date_object.strftime("%d.%m.%Y")
-
