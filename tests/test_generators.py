@@ -1,4 +1,8 @@
-from src.generators import filter_by_currency, transaction_descriptions
+from src.generators import (
+    filter_by_currency,
+    transaction_descriptions,
+    card_number_generator,
+)
 
 transactions = [
     {
@@ -67,4 +71,14 @@ def test_transaction_descriptions():
         "Перевод со счета на счет",
         "Перевод с карты на карту",
         "Перевод организации",
+    ]
+
+
+def test_card_number_generator():
+    result = list(card_number_generator(1, 3))
+
+    assert result == [
+        "0000 0000 0000 0001",
+        "0000 0000 0000 0002",
+        "0000 0000 0000 0003",
     ]
