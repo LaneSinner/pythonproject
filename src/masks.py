@@ -33,7 +33,7 @@ def get_mask_card_number(card_number: str) -> str:
         logger.info("Номер карты успешно замаскирован")
         return result
 
-    except ValueError:
+    except Exception:
         logger.exception("Ошибка при маскировке номера карты")
         raise
 
@@ -49,7 +49,7 @@ def get_mask_account(account_number: str) -> str:
         logger.info("Номер счёта успешно замаскирован")
         return result
 
-    except ValueError:
+    except Exception:
         logger.exception("Ошибка при маскировке номера счёта")
         raise
 

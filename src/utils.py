@@ -30,17 +30,14 @@ def read_json_file(file_path: str | Path) -> list[dict[str, Any]]:
     try:
         with open(file_path, "r", encoding="utf-8") as file:
             data = json.load(file)
-    except FileNotFoundError:
-        logger.exception("JSON-файл не найден: %s", file_path)
-        return []
 
-    except json.JSONDecodeError:
-        logger.exception("Ошибка чтения JSON: %s", file_path)
-        return []
+        if not isinstance(data, list):
+            logger.error("Содержимое JSON-файла не является списком")
+            return []
 
-    if not isinstance(data, list):
-        logger.error("Содержимое JSON-файла не является списком")
-        return []
+        logger.info("JSON-файл успешно прочитан: %s", file_path)
+        return data
 
-    logger.info("JSONфайл успешно прочитан: %s", file_path)
-    return data
+    except (FileNotFoundError, json.JSONDecodeError, OSError):
+        logger.exception("Ошибка при чтении JSON-файла: %s", file_path)
+        return []

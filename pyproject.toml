@@ -7,6 +7,8 @@ authors = [
 ]
 requires-python = ">=3.12"
 dependencies = [
+    "pandas",
+    "openpyxl",
 ]
 
 
@@ -17,7 +19,8 @@ build-backend = "poetry.core.masonry.api"
 [dependency-groups]
 dev = [
     "requests (>=2.34.2,<3.0.0)",
-    "pytest (>=9.1.1,<10.0.0)"
+    "pytest (>=9.1.1,<10.0.0)",
+    "pytest-cov (>=7.1.0,<8.0.0)"
 ]
 lint = [
     "flake8 (>=7.3.0,<8.0.0)",
